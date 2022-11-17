@@ -1,18 +1,35 @@
 import React from 'react';
+import { Avatar, Box, Button, IconButton, Modal, TextField } from '@mui/material';
 
-import { Link } from 'react-router-dom';
+const Navbar = () => {
+  const [open, setOpen] = React.useState(false);
+  const openLoginModal = () => setOpen(true);
+  const closeLoginModal = () => setOpen(false);
 
-
-const NavBar = () => {
     return (
+        <>
         <nav>
-        <div className='menuitem'>
-                <Link to='/'>Home</Link>    
-                <Link to='/Products'>Products</Link>    
-                <Link to='/About'>About</Link>  
-        </div>
+            <Box className='navBarContent' sx={{display:"flex"}}>
+                <a href='/'><img src={require('../img/logo.png')} width='140px'/></a>
+                <Box className='navLinks' sx={{display:'flex', alignItems:'center', right:0, marginLeft:'auto'}}>
+                    <Button href='/'>Home</Button>
+                    <Button href='/Services'>Services</Button>
+                    <Button href='/Animals'>Animals</Button>
+                    <IconButton sx={{p:0, ml:'24px'}} onClick={openLoginModal}><Avatar sx={{bgcolor:'primary.main'}}/></IconButton>
+                </Box>
+            </Box>
         </nav>
+
+        <Modal open={open} onClose={closeLoginModal}>
+            <Box className='loginModal'>
+                <img src={require('../img/logoIcon.png')} width='80px'/>
+                <TextField fullWidth label="Username" id="fullWidth"/>
+                <TextField fullWidth label="Password" id="fullWidth" type='password'/>
+                <Button variant='contained' size='large' fullWidth>Login</Button>
+            </Box>
+        </Modal>
+        </>
     )
 }
 
-export default NavBar
+export default Navbar
