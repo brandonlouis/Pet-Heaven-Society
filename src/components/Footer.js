@@ -1,8 +1,9 @@
 import { Box } from '@mui/system'
 import { Email, Call, Place  } from '@mui/icons-material'
 import React from 'react'
+import { IconButton } from '@mui/material'
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer>
         <Box className='footerContent' sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
@@ -10,9 +11,9 @@ const Footer = () => {
                 <a href='/'><img src={require('../img/logo-w.png')} width='140px'/></a>
             </div>
             <div className='footerMiddle'>
-                <a href='https://www.facebook.com/'><img src={require('../img/icons/facebook.png')} width='40px'/></a>
-                <a href='https://www.twitter.com/'><img style={{margin:"0 20px"}} src={require('../img/icons/twitter.png')} width='40px'/></a>
-                <a href='https://www.instagram.com/'><img src={require('../img/icons/instagram.png')} width='40px'/></a>
+                <IconButton sx={{p:0,m:0}} href='https://www.facebook.com/'><img src={require('../img/icons/facebook.png')} width='40px'/></IconButton>
+                <IconButton sx={{p:0,m:0,mx:'20px'}} href='https://www.twitter.com/'><img src={require('../img/icons/twitter.png')} width='40px'/></IconButton>
+                <IconButton sx={{p:0,m:0}} href='https://www.instagram.com/'><img src={require('../img/icons/instagram.png')} width='40px'/></IconButton>
             </div>
             <div className='footerRight'>
                 <p>Contact us:</p>
@@ -24,5 +25,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer

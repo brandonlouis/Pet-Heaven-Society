@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Box, Button, IconButton, Modal, TextField } from '@mui/material';
 
-const Navbar = () => {
+export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const openLoginModal = () => setOpen(true);
   const closeLoginModal = () => setOpen(false);
@@ -23,13 +23,11 @@ const Navbar = () => {
         <Modal open={open} onClose={closeLoginModal}>
             <Box className='loginModal'>
                 <img src={require('../img/logoIcon.png')} width='80px'/>
-                <TextField fullWidth label="Username" id="fullWidth"/>
-                <TextField fullWidth label="Password" id="fullWidth" type='password'/>
+                <TextField fullWidth label="Username"/>
+                <TextField fullWidth label="Password" type='password'/>
                 <Button variant='contained' size='large' fullWidth>Login</Button>
             </Box>
         </Modal>
         </>
     )
 }
-
-export default Navbar

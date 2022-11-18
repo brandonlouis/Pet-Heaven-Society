@@ -1,8 +1,28 @@
 import { Box, Button, Grid } from '@mui/material'
-import { Male, Female } from '@mui/icons-material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import AnimalGrid from './AnimalGrid'
 
-const Home = () => {
+function getWindowSize() {
+  const {innerWidth} = window;
+  return {innerWidth};
+}
+
+export default function Home() {
+
+    const [windowSize, setWindowSize] = useState(getWindowSize());
+
+    useEffect(() => {
+        function handleWindowResize() {
+        setWindowSize(getWindowSize());
+        }
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+        window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
 
     return (
         <>
@@ -55,31 +75,11 @@ const Home = () => {
             </Grid>
         </Box>
 
-        <Box className='petsAvail'>
+        <Box className='animalsAvail' style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
             <h1 style={{textAlign:'center'}}>Pets available for adoption</h1>
-            <Grid container direction='row' justifyContent='space-evenly' alignItems='stretch'>
-                <Grid item xs={2.8} className='gridItem'>
-                    <img src={require('../img/adoptionAnimals/dog.jfif')} width='100%'></img>
-                    <h2>Jake &nbsp;<Male sx={{color:'steelblue'}}/></h2>
-                    <p>Species: Mongrel</p>
-                </Grid>
-                <Grid item xs={2.8} className='gridItem'>
-                    <img src={require('../img/adoptionAnimals/cat.jpg')} width='100%'></img>
-                    <h2>Boo &nbsp;<Female sx={{color:'indianred'}}/></h2>
-                    <p>Species: Korat</p>
-                </Grid>
-                <Grid item xs={2.8} className='gridItem'>
-                    <img src={require('../img/adoptionAnimals/cat2.jpg')} width='100%'></img>
-                    <h2>Merlin &nbsp;<Male sx={{color:'steelblue'}}/></h2>
-                    <p>Species: Grey Tabby</p>
-                </Grid>
-                <div style={{display:'flex', alignItems:'center'}}>
-                    <Button href='/Animals' variant='contained' size='large' style={{height:'50px'}}>See more ⇀</Button>
-                </div>
-            </Grid>
+            {windowSize.innerWidth < 1000 ? <AnimalGrid results={2}/> : <AnimalGrid results={3}/>}
+            <Button href='/Animals' variant='contained' size='large' style={{marginTop:50}}>See more ⇀</Button>
         </Box>
         </>
     )
 }
-
-export default Home

@@ -33,7 +33,7 @@ function a11yProps(index) {
     };
 }
 
-const Services = () => {
+export default function Services() {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (e, newValue) => {
@@ -73,5 +73,3 @@ const Services = () => {
     </>
   )
 }
-
-export default Services

@@ -1,0 +1,97 @@
+[
+    {
+        "type": "cat",
+        "age": 0.5,
+        "breed": "Brown Tabby",
+        "gender": "Female",
+        "name": "Panini"
+    },
+    {
+        "type": "cat",
+        "age": 1,
+        "breed": "Grey Tabby",
+        "gender": "Male",
+        "name": "Merlin"
+    },
+    {
+        "type": "cat",
+        "age": 1.5,
+        "breed": "White Tabby",
+        "gender": "Female",
+        "name": "Tofu"
+    },
+    {
+        "type": "cat",
+        "age": 2,
+        "breed": "Korat",
+        "gender": "Female",
+        "name": "Boo"
+    },
+    {
+        "type": "cat",
+        "age": 2,
+        "breed": "Brown Tabby",
+        "gender": "Female",
+        "name": "Juniper"
+    },
+    {
+        "type": "cat",
+        "age": 3,
+        "breed": "Cross-Persian",
+        "gender": "Male",
+        "name": "Casper"
+    },
+    {
+        "type": "cat",
+        "age": 8,
+        "breed": "Local",
+        "gender": "Male",
+        "name": "Snow"
+    },
+
+
+
+    
+    {
+        "type": "dog",
+        "age": 2.5,
+        "breed": "Mongrel",
+        "gender": "Female",
+        "name": "Caramel"
+    },
+    {
+        "type": "dog",
+        "age": 7,
+        "breed": "Mongrel",
+        "gender": "Female",
+        "name": "Mocha"
+    },
+    {
+        "type": "dog",
+        "age": 7,
+        "breed": "Mongrel",
+        "gender": "Male",
+        "name": "Aries"
+    },
+    {
+        "type": "dog",
+        "age": 7,
+        "breed": "Mongrel",
+        "gender": "Male",
+        "name": "Kishen"
+    },
+    {
+        "type": "dog",
+        "age": 8,
+        "breed": "Mongrel",
+        "gender": "Female",
+        "name": "Hazel"
+    },
+    {
+        "type": "dog",
+        "age": 8,
+        "breed": "Mongrel",
+        "gender": "Male",
+        "name": "Spike"
+    }
+]

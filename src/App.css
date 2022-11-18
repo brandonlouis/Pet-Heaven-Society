@@ -1,8 +1,10 @@
 /* 455a63 93a8ac d7ceb2 a59e8c 66635b */
 
-html {
+body {
     background-color: #D7CEB2;
     overflow-x: hidden;
+    overflow-y: auto !important;
+    padding-right: 0 !important;
 }
 
 h1 {
@@ -106,43 +108,40 @@ footer {
     top:348px;
 }
 
+.mission, .howHelp, .animalsAvail, .services {
+    margin: 0 10%;
+    margin-top: 160px;
+}
+
+.mission h2, .howHelp .gridItem h2 {
+    margin-top: 0;
+}
+
+.howHelp {
+    text-align: center;
+}
+
+.animalsAvail h2 {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.animalsAvail p {
+    margin-top: 0;
+}
+
+.grid {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+}
 .gridItem {
     background-color: #A59E8C;
     padding: 20px;
     color: white;
     border-radius: 20px;
 }
-
-.mission, .howHelp, .petsAvail, .services {
-    margin: 0 10%;
-    margin-top: 160px;
-}
-
-.mission h2 {
-    margin-top: 0;
-}
-
-.howHelp .gridItem h2 {
-    margin-top: 0;
-}
-.howHelp {
-    text-align: center;
-}
-
-.petsAvail h2 {
-    margin: 5px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.petsAvail p {
-    margin-top: 0;
-}
-
-
-
-
-
 
 
 
