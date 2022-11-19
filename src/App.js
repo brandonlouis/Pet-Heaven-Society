@@ -8,6 +8,8 @@ import Home from './components/Home';
 import Services from './components/Services';
 import Footer from './components/Footer';
 import Animals from './components/Animals';
+import AdoptionForm from './components/forms/AdoptionForm';
+import RehomingForm from './components/forms/RehomingForm';
 
 const theme = createTheme({
     palette: {
@@ -27,8 +29,10 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route path="/" exact element={ <Home />} />
-                <Route path="/Services"  element ={ <Services />} />
+                <Route path="/Services" exact element ={ <Services />} />
                 <Route path="/Animals" exact element={ <Animals />} />
+                <Route path="/forms/AdoptionForm" exact element={ <AdoptionForm/>} />
+                <Route path='/forms/RehomingForm' exact element={ <RehomingForm/>} />
             </Routes>
             <Footer/>
         </BrowserRouter>

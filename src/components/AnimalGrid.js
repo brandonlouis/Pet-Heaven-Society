@@ -1,5 +1,6 @@
 import { Female, Male } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const AnimalGrid  = ({ results }) => {
 
@@ -21,6 +22,11 @@ const AnimalGrid  = ({ results }) => {
 
     if (results === 'all') {
         results = data.length;
+    }
+
+    const navigate = useNavigate();
+    const toAdoptionForm=(param)=>{
+        navigate('/forms/AdoptionForm',{state:{type:param.type, gender:param.gender, age:param.age, breed:param.breed, name:param.name}});
     }
 
     return (
@@ -47,7 +53,7 @@ const AnimalGrid  = ({ results }) => {
                 }
 
                 return (
-                    <a href='/animals' style={{textDecoration:'none'}} key={index}>
+                     <a onClick={()=>{toAdoptionForm(e)}} key={index} style={{cursor:'pointer'}}>
                         <div className='gridItem'>
                             <img src={require('../img/adoptionAnimals/' + e.name.toLowerCase() + '.jpg')} width='100%'/>
                             <h2>{e.name} {genderIcon(e.gender)}</h2>

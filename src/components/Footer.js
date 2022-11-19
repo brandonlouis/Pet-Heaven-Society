@@ -8,7 +8,7 @@ export default function Footer() {
     <footer>
         <Box className='footerContent' sx={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
             <div>
-                <a href='/'><img src={require('../img/logo-w.png')} width='140px'/></a>
+                <a href='/'><img src={require('../img/branding/logo-w.png')} width='140px'/></a>
             </div>
             <div className='footerMiddle'>
                 <IconButton sx={{p:0,m:0}} href='https://www.facebook.com/'><img src={require('../img/icons/facebook.png')} width='40px'/></IconButton>
@@ -17,9 +17,9 @@ export default function Footer() {
             </div>
             <div className='footerRight'>
                 <p>Contact us:</p>
-                <p>contact@phs.com&nbsp;&nbsp;<Email/></p>
-                <p>+65 6123 4567&nbsp;&nbsp;<Call/></p>
-                <p>8 Sungei Kadut Street 3, Singapore 729154&nbsp;&nbsp;<Place/></p>
+                <a href={"mailto:contact@phs.com"}><p>contact@phs.com&nbsp;&nbsp;<Email/></p></a>
+                <a href={"tel:+6561234567"}><p>+65 6123 4567&nbsp;&nbsp;<Call/></p></a>
+                <a href='https://goo.gl/maps/mmALZ21PDxB6G97y7' target='_blank'><p>8 Sungei Kadut Street 3, Singapore 729154&nbsp;&nbsp;<Place/></p></a>
             </div>
         </Box>
     </footer>

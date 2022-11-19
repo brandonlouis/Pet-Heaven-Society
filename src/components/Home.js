@@ -36,7 +36,7 @@ export default function Home() {
                 </div>
             </Box>
             <Box sx={{width:'65%', display:'flex', alignItems:'flex-end'}}>
-                <img className='bannerPets' src={require('../img/banner.png')}/>
+                <img className='bannerPets' src={require('../img/banners/banner.png')}/>
             </Box>
         </Box>
 

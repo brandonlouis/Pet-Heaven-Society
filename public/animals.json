@@ -1,48 +1,48 @@
 [
     {
-        "type": "cat",
+        "type": "Cat",
         "age": 0.5,
         "breed": "Brown Tabby",
         "gender": "Female",
         "name": "Panini"
     },
     {
-        "type": "cat",
+        "type": "Cat",
         "age": 1,
         "breed": "Grey Tabby",
         "gender": "Male",
         "name": "Merlin"
     },
     {
-        "type": "cat",
+        "type": "Cat",
         "age": 1.5,
         "breed": "White Tabby",
         "gender": "Female",
         "name": "Tofu"
     },
     {
-        "type": "cat",
+        "type": "Cat",
         "age": 2,
         "breed": "Korat",
         "gender": "Female",
         "name": "Boo"
     },
     {
-        "type": "cat",
+        "type": "Cat",
         "age": 2,
         "breed": "Brown Tabby",
         "gender": "Female",
         "name": "Juniper"
     },
     {
-        "type": "cat",
+        "type": "Cat",
         "age": 3,
         "breed": "Cross-Persian",
         "gender": "Male",
         "name": "Casper"
     },
     {
-        "type": "cat",
+        "type": "Cat",
         "age": 8,
         "breed": "Local",
         "gender": "Male",
@@ -53,42 +53,42 @@
 
     
     {
-        "type": "dog",
+        "type": "Dog",
         "age": 2.5,
         "breed": "Mongrel",
         "gender": "Female",
         "name": "Caramel"
     },
     {
-        "type": "dog",
+        "type": "Dog",
         "age": 7,
         "breed": "Mongrel",
         "gender": "Female",
         "name": "Mocha"
     },
     {
-        "type": "dog",
+        "type": "Dog",
         "age": 7,
         "breed": "Mongrel",
         "gender": "Male",
         "name": "Aries"
     },
     {
-        "type": "dog",
+        "type": "Dog",
         "age": 7,
         "breed": "Mongrel",
         "gender": "Male",
         "name": "Kishen"
     },
     {
-        "type": "dog",
+        "type": "Dog",
         "age": 8,
         "breed": "Mongrel",
         "gender": "Female",
         "name": "Hazel"
     },
     {
-        "type": "dog",
+        "type": "Dog",
         "age": 8,
         "breed": "Mongrel",
         "gender": "Male",
