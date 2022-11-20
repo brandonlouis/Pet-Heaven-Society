@@ -9,7 +9,7 @@ export default function AdoptionForm() {
     return (
         <>
         <Box sx={{display:'flex'}}>
-            <div className='adoptionBanner' style={{width:'100%', backgroundImage: `url(${require('../../img/adoptionAnimals/'+location.state.name.toLowerCase()+'.jpg')}`}}></div>
+            <div className='adoptionBanner' style={{width:'100%', backgroundImage: `url(${location.state.url}`}}></div>
             <Box className='form' sx={{mt:'50px', ml:'0', display:'flex', flexDirection:'column'}}>
                 <h2>Adopter's Particulars</h2>
                 <Grid container spacing={3} className='particulars'>

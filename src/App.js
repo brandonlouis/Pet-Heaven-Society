@@ -10,11 +10,15 @@ import Footer from './components/Footer';
 import Animals from './components/Animals';
 import AdoptionForm from './components/forms/AdoptionForm';
 import RehomingForm from './components/forms/RehomingForm';
+import { AuthContextProvider } from './firebaseService/authContext';
 
 const theme = createTheme({
     palette: {
         primary: {
-        main: blueGrey[700],
+            main: blueGrey[700],
+        },
+        success: {
+            main: '#44b700',
         },
     },
     typography: {
@@ -24,19 +28,22 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-        <BrowserRouter>
-            <Navbar/>
-            <Routes>
-                <Route path="/" exact element={ <Home />} />
-                <Route path="/Services" exact element ={ <Services />} />
-                <Route path="/Animals" exact element={ <Animals />} />
-                <Route path="/forms/AdoptionForm" exact element={ <AdoptionForm/>} />
-                <Route path='/forms/RehomingForm' exact element={ <RehomingForm/>} />
-            </Routes>
-            <Footer/>
-        </BrowserRouter>
-    </ThemeProvider>
+    <AuthContextProvider>
+        <ThemeProvider theme={theme}>
+            <BrowserRouter>
+                <Navbar/>
+                <Routes>
+                    <Route path="/" exact element={ <Home />} />
+                    <Route path="/Services" exact element ={ <Services />} />
+                    <Route path="/Animals" exact element={ <Animals />} />
+                    <Route path="/forms/AdoptionForm" exact element={ <AdoptionForm/>} />
+                    <Route path='/forms/RehomingForm' exact element={ <RehomingForm/>} />
+                </Routes>
+                <Footer/>
+            </BrowserRouter>
+        </ThemeProvider>
+    </AuthContextProvider>
+
   )
 }
 

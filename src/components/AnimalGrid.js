@@ -1,37 +1,32 @@
 import { Female, Male } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import AnimalDataSvc from '../firebaseService/animalSvc';
 
 const AnimalGrid  = ({ results }) => {
+    const [animalData,setAnimalData]=useState([]);
 
-    const [data,setData]=useState([]);
+    const fetchAnimals = async () => {
+        const data = await AnimalDataSvc.getAnimals();
+        setAnimalData(data);
+    }
 
-    const fetchData = () => {
-        fetch(`animals.json`)
-        .then((response) => response.json())
-        .then((actualData) => {         
-            setData(actualData)
-        })
-        .catch((err) => {
-            console.log(err.message);
-        });
-    };
     useEffect(()=>{
-        fetchData()
+        fetchAnimals()
     },[])
 
     if (results === 'all') {
-        results = data.length;
+        results = animalData.length;
     }
 
     const navigate = useNavigate();
     const toAdoptionForm=(param)=>{
-        navigate('/forms/AdoptionForm',{state:{type:param.type, gender:param.gender, age:param.age, breed:param.breed, name:param.name}});
+        navigate('/forms/AdoptionForm',{state:{type:param.type, gender:param.gender, age:param.age, breed:param.breed, name:param.name, url:param.url}});
     }
 
     return (
         <div className='grid'>
-            {data.slice(0,results).map((e, index) => {
+            {animalData.slice(0,results).map((e, index) => {
 
                 var ageText = e.age
                 if (e.age === 1) {
@@ -44,8 +39,8 @@ const AnimalGrid  = ({ results }) => {
                     ageText = ageText*10 + ' months'
                 }
 
-                const genderIcon = (gender) => {
-                    if (gender === 'Male') {
+                const genderIcon = () => {
+                    if (e.gender === 'Male') {
                         return <Male sx={{color:'steelblue'}}/>
                     } else {
                         return <Female sx={{color:'indianred'}}/>
@@ -55,8 +50,8 @@ const AnimalGrid  = ({ results }) => {
                 return (
                      <a onClick={()=>{toAdoptionForm(e)}} key={index} style={{cursor:'pointer'}}>
                         <div className='gridItem'>
-                            <img src={require('../img/adoptionAnimals/' + e.name.toLowerCase() + '.jpg')} width='100%'/>
-                            <h2>{e.name} {genderIcon(e.gender)}</h2>
+                            <img src={e.url} key={index} width='100%'/>
+                            <h2>{e.name} {genderIcon()}</h2>
                             <p style={{margin:0}}>Breed: {e.breed}</p>
                             <p style={{marginTop:0}}>Age: {ageText} old</p>
                         </div>
