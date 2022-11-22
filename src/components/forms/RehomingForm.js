@@ -59,11 +59,11 @@ export default function RehomingForm() {
 
     return (
         <>
-        <div className='rehomeBanner' style={{width:'100%'}}>
+        <div className='rehomeBanner animate__animated animate__fadeIn animate__fast animate__delay-1s' style={{width:'100%'}}>
             <h1 style={{color:'white'}}>Rehoming Form</h1>
         </div>
 
-        <form onSubmit={submitForm}>
+        <form onSubmit={submitForm} className='animate__animated animate__fadeInUp animate__fast animate__delay-1s'>
             <Box className='form' sx={{mt:'50px', display:'flex', flexDirection:'column'}}>
                 <h2>Pet Parent's Particulars</h2>
                 <Grid container spacing={3} className='particulars'>

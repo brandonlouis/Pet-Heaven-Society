@@ -17,16 +17,7 @@ const AnimalGrid  = ({ results, type, gender }) => {
 
     useEffect(()=>{
         fetchAnimals()
-
-        if (type) {
-            const filtered = animalData.filter(animal => {
-                return animal.type === type;
-            });
-            setAnimalData(filtered)
-            console.log(animalData)
-        }
-
-    },[type])
+    },[])
 
 
     const navigate = useNavigate()
@@ -35,7 +26,7 @@ const AnimalGrid  = ({ results, type, gender }) => {
     }
 
     return (
-        <div className='grid'>
+        <div className='grid animate__animated animate__fadeInUp animate__fast animate__delay-1s'>
             {animalData.slice(0,results).map((e, index) => {
 
                 var ageText = e.age
@@ -49,11 +40,17 @@ const AnimalGrid  = ({ results, type, gender }) => {
                     ageText = ageText*10 + ' months'
                 }
 
-                const genderIcon = () => {
+                function genderIcon() {
                     if (e.gender === 'Male') {
                         return <Male sx={{color:'steelblue'}}/>
                     } else {
                         return <Female sx={{color:'indianred'}}/>
+                    }
+                }
+
+                function hdbIcon() {
+                    if (e.hdbApproved) {
+                        return <img src={require('../img/icons/hdbApproved.png')} style={{width:'25px'}}/>
                     }
                 }
 
@@ -62,7 +59,7 @@ const AnimalGrid  = ({ results, type, gender }) => {
                         <div className='gridItem'>
                             <img src={e.url} key={index} width='100%'/>
                             <h2>{e.name} {genderIcon()}</h2>
-                            <p style={{margin:0}}>Breed: {e.breed}</p>
+                            <p style={{margin:0}}>Breed: {e.breed} {hdbIcon()}</p>
                             <p style={{marginTop:0}}>Age: {ageText} old</p>
                         </div>
                     </a>

@@ -12,7 +12,6 @@ class AnimalDataSvc {
         })
         return animals
     }
-
     
     // async addAnimal(animal) {
     //     const docRef = await addDoc(animalCollectionRef, animal)

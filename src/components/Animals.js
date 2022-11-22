@@ -1,4 +1,4 @@
-import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import { Box, FormControl, FormControlLabel, FormGroup, InputLabel, MenuItem, Select, Switch } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import AnimalGrid from './AnimalGrid'
 import AnimalDataSvc from '../firebaseService/animalSvc'
@@ -15,6 +15,7 @@ export default function Animals() {
     const [age, setAge] = useState('')
     const [breed, setBreed] = useState('')
     const [gender, setGender] = useState('')
+    const [hdbApproved, setHDBApproved] = useState('')
 
     const fetchAnimals = async () => {
         const data = await AnimalDataSvc.getAnimals()
@@ -58,7 +59,6 @@ export default function Animals() {
         setInitGender(uniqueField.sort())
         uniqueField = []
 
-
     },[isLoading])
 
     const typeFilter = (event) => {
@@ -73,11 +73,15 @@ export default function Animals() {
     const genderFilter = (event) => {
         setGender(event.target.value)
     }
+    const hdbFilter = (event) => {
+        setHDBApproved(event.target.value)
+    }
 
     return (
         <>
-        <Box sx={{mx:'10%', mt:'50px'}}>
+        <Box className='animate__animated animate__fadeInLeft animate__fast' sx={{mx:'10%', mt:'50px'}}>
             <h1>Animals for adoption</h1>
+            <Box sx={{display:'flex', alignItems:'center'}}>
             <FormControl sx={{ m: 1, minWidth: 100 }}>
                 <InputLabel>Type</InputLabel>
                 <Select value={type} label="Type" onChange={typeFilter}>
@@ -129,6 +133,11 @@ export default function Animals() {
                 }
                 </Select>
             </FormControl>
+
+            <FormGroup sx={{ml: 3, minWidth: 100}}>
+                <FormControlLabel control={<Switch color='success'/>} label="HDB Approved" />
+            </FormGroup>
+            </Box>
         </Box>
 
         <Box className='animalsAvail' sx={{mt:5}}>

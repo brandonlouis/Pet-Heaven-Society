@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Avatar, Badge, Box, Button, Checkbox, FormControlLabel, FormGroup, IconButton, Modal, Tab, Tabs, TextField } from '@mui/material'
 import PropTypes from 'prop-types'
 import { UserAuth } from '../firebaseService/authContext'
+import { Close } from '@mui/icons-material'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -121,7 +122,7 @@ export default function Navbar() {
 
     return (
         <>
-        <nav>
+        <nav className='animate__animated animate__fadeInDown animate__fast'>
             <Box className='navBarContent' sx={{display:'flex'}}>
                 <a href='/'><img src={require('../img/branding/logo.png')} width='140px'/></a>
                 <Box className='navLinks' sx={{display:'flex', alignItems:'center', right:0, marginLeft:'auto'}}>
@@ -141,9 +142,12 @@ export default function Navbar() {
             </Box>
         </nav>
 
-        <Modal open={open} onClose={closeLoginModal}>
+
+        <Modal open={open} onClose={closeLoginModal} >
             <Box className='loginModal'>
-                <img src={require('../img/branding/logoIcon.png')} width='60px' style={{marginBottom:10}}/>
+                <div className='loginModalContent'>
+                <IconButton onClick={closeLoginModal} sx={{position:'absolute', right:10, top:10}}><Close fontSize='large' color='primary'/></IconButton>
+                <img src={require('../img/branding/logoIcon.png')} width='60px' style={{marginBottom:10, paddingTop:20}}/>
                 <Box sx={{borderBottom: 1, borderColor: 'divider', width:'100%'}}>
                     <Tabs value={tabValue} onChange={changeTab}>
                         <Tab label='Login' {...tabProps(0)} />
@@ -171,6 +175,7 @@ export default function Navbar() {
                         <Button variant='contained' size='large' type='submit' sx={{mt:3}} fullWidth>Create Account</Button>
                     </form>
                 </TabPanel>
+                </div>
             </Box>
         </Modal>
         </>
