@@ -1,16 +1,18 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { createTheme, ThemeProvider } from '@mui/material';
-import { blueGrey } from '@mui/material/colors';
-import './App.css';
-import Navbar from './components/Navbar';
-import Home from './components/Home';
-import Services from './components/Services';
-import Footer from './components/Footer';
-import Animals from './components/Animals';
-import AdoptionForm from './components/forms/AdoptionForm';
-import RehomingForm from './components/forms/RehomingForm';
-import { AuthContextProvider } from './firebaseService/authContext';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { createTheme, ThemeProvider } from '@mui/material'
+import { blueGrey } from '@mui/material/colors'
+import './App.css'
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import Services from './components/Services'
+import Footer from './components/Footer'
+import Animals from './components/Animals'
+import AdoptionForm from './components/forms/AdoptionForm'
+import RehomingForm from './components/forms/RehomingForm'
+import Admin from './components/Admin'
+import { AuthContextProvider } from './firebaseService/authContext'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const theme = createTheme({
     palette: {
@@ -24,7 +26,7 @@ const theme = createTheme({
     typography: {
         "fontFamily": `"Segoe UI", "Helvetica Neue"`,
     },
-});
+})
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
                     <Route path="/Animals" exact element={ <Animals />} />
                     <Route path="/forms/AdoptionForm" exact element={ <AdoptionForm/>} />
                     <Route path='/forms/RehomingForm' exact element={ <RehomingForm/>} />
+                    <Route path='/Admin' exact element={ <ProtectedRoute><Admin/></ProtectedRoute> } />
                 </Routes>
                 <Footer/>
             </BrowserRouter>
@@ -47,4 +50,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

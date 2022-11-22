@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Avatar, Badge, Box, Button, Checkbox, FormControlLabel, FormGroup, IconButton, Modal, Tab, Tabs, TextField } from '@mui/material'
 import PropTypes from 'prop-types'
 import { UserAuth } from '../firebaseService/authContext'
@@ -32,6 +33,7 @@ function tabProps(index) {
 }
 
 export default function Navbar() {
+    const navigate = useNavigate()
     const [open, setOpen] = useState(false)
     const [tabValue, setTabValue] = useState(0)
     const [email, setEmail] = useState('')
@@ -79,14 +81,36 @@ export default function Navbar() {
 
         try {
             await login(email, password)
-            alert(`Login successful. Welcome ${email}!`)
-            closeLoginModal()
+            alert(`Welcome ${email}, you have successfully signed in`)
+            if (email === 'admin@psh.com') {
+                closeLoginModal()
+                navigate('/Admin')
+                window.location.reload()
+            } else {
+                closeLoginModal()
+                window.location.reload()
+            }
         } catch (err) {
             console.log(err)
             if (err.code === 'auth/invalid-email' || err.code === 'auth/user-not-found') {
                 alert('Invalid Email');
-            } else if (err.code === 'auth/invalid-password') {
+            } else if (err.code === 'auth/wrong-password') {
                 alert('Invalid Password');
+            }
+        }
+    }
+
+    const handleLogout = async (e) => {
+        e.preventDefault()
+
+        if (window.confirm('Are you sure you want to logout?')) {
+            try {
+                await logout()
+                alert('Successfully logged out')
+                closeLoginModal()
+                window.location.reload()
+            } catch (err) {
+                console.log(err)
             }
         }
 
@@ -94,23 +118,6 @@ export default function Navbar() {
         setPassword('')
         setCfmPassword('')
     }
-
-    const handleLogout = async (e) => {
-        e.preventDefault()
-
-        try {
-            await logout()
-            alert('Successfully logged out')
-        } catch (err) {
-            console.log(err)
-        }
-
-        setEmail('')
-        setPassword('')
-        setCfmPassword('')
-    }
-
-    console.log(user)
 
     return (
         <>
@@ -121,6 +128,7 @@ export default function Navbar() {
                     <Button href='/'>Home</Button>
                     <Button href='/Services'>Services</Button>
                     <Button href='/Animals'>Animals</Button>
+                    {user && user.email=='admin@psh.com' ? <Button href='/Admin'>Admin</Button> : <></>}
                     <IconButton sx={{p:0, ml:'24px'}} onClick={user ? handleLogout : openLoginModal}>
                         {user ? 
                             <Badge color='success' overlap='circular' badgeContent=' ' anchorOrigin={{vertical:'bottom', horizontal:'right'}}>
@@ -145,20 +153,20 @@ export default function Navbar() {
 
                 <TabPanel value={tabValue} index={0}>
                     <form onSubmit={handleLogin}>
-                        <TextField label='Email' onChange={(e)=>setEmail(e.target.value)} sx={{mt:3}} fullWidth/>
-                        <TextField label='Password' onChange={(e)=>setPassword(e.target.value)} sx={{mt:2}} type='password' fullWidth/>
+                        <TextField label='Email' onChange={(e)=>setEmail(e.target.value)} sx={{mt:3}} type='email' fullWidth required/>
+                        <TextField label='Password' onChange={(e)=>setPassword(e.target.value)} sx={{mt:2}} type='password' fullWidth required/>
 
                         <Button variant='contained' size='large' type='submit' sx={{mt:3}} fullWidth>Login</Button>
                         <FormGroup sx={{mt:1}}>
-                            <FormControlLabel control={<Checkbox size='small'/>} label="Remember me" />
+                            <FormControlLabel control={<Checkbox size='small'/>} label='Remember me' />
                         </FormGroup>
                     </form>
                 </TabPanel>
                 <TabPanel value={tabValue} index={1}>
                     <form onSubmit={createAccount}>
-                        <TextField label='Email' sx={{mt:3}} onChange={(e)=>setEmail(e.target.value)} type='email' fullWidth/>
-                        <TextField label='Password' sx={{mt:2}} onChange={(e)=>setPassword(e.target.value)} type='password' fullWidth/>
-                        <TextField label='Confirm Password' sx={{mt:2}} type='password' onChange={(e)=>setCfmPassword(e.target.value)} fullWidth/>
+                        <TextField label='Email' sx={{mt:3}} onChange={(e)=>setEmail(e.target.value)} type='email' fullWidth required/>
+                        <TextField label='Password' sx={{mt:2}} onChange={(e)=>setPassword(e.target.value)} type='password' fullWidth required/>
+                        <TextField label='Confirm Password' sx={{mt:2}} type='password' onChange={(e)=>setCfmPassword(e.target.value)} fullWidth required/>
 
                         <Button variant='contained' size='large' type='submit' sx={{mt:3}} fullWidth>Create Account</Button>
                     </form>

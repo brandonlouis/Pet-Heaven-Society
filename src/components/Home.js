@@ -3,26 +3,23 @@ import React, { useEffect, useState } from 'react'
 import AnimalGrid from './AnimalGrid'
 
 function getWindowSize() {
-  const {innerWidth} = window;
-  return {innerWidth};
+  const {innerWidth} = window
+  return {innerWidth}
 }
 
 export default function Home() {
-
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-
+    const [windowSize, setWindowSize] = useState(getWindowSize())
     useEffect(() => {
         function handleWindowResize() {
-        setWindowSize(getWindowSize());
+            setWindowSize(getWindowSize())
         }
 
-        window.addEventListener('resize', handleWindowResize);
+        window.addEventListener('resize', handleWindowResize)
 
         return () => {
-        window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
-
+            window.removeEventListener('resize', handleWindowResize)
+        }
+    }, [])
 
     return (
         <>

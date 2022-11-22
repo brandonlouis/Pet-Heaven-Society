@@ -1,27 +1,37 @@
 import { Female, Male } from '@mui/icons-material'
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-import AnimalDataSvc from '../firebaseService/animalSvc';
+import { useNavigate } from 'react-router-dom'
+import AnimalDataSvc from '../firebaseService/animalSvc'
 
-const AnimalGrid  = ({ results }) => {
-    const [animalData,setAnimalData]=useState([]);
+const AnimalGrid  = ({ results, type, gender }) => {
+    const [animalData,setAnimalData]=useState([])
 
     const fetchAnimals = async () => {
-        const data = await AnimalDataSvc.getAnimals();
-        setAnimalData(data);
+        const data = await AnimalDataSvc.getAnimals()
+        setAnimalData(data)
+    }
+
+    if (results === 'all') {
+        results = animalData.length
     }
 
     useEffect(()=>{
         fetchAnimals()
-    },[])
 
-    if (results === 'all') {
-        results = animalData.length;
-    }
+        if (type) {
+            const filtered = animalData.filter(animal => {
+                return animal.type === type;
+            });
+            setAnimalData(filtered)
+            console.log(animalData)
+        }
 
-    const navigate = useNavigate();
+    },[type])
+
+
+    const navigate = useNavigate()
     const toAdoptionForm=(param)=>{
-        navigate('/forms/AdoptionForm',{state:{type:param.type, gender:param.gender, age:param.age, breed:param.breed, name:param.name, url:param.url}});
+        navigate('/forms/AdoptionForm',{state:{type:param.type, gender:param.gender, age:param.age, breed:param.breed, name:param.name, url:param.url}})
     }
 
     return (
@@ -48,7 +58,7 @@ const AnimalGrid  = ({ results }) => {
                 }
 
                 return (
-                     <a onClick={()=>{toAdoptionForm(e)}} key={index} style={{cursor:'pointer'}}>
+                    <a onClick={()=>{toAdoptionForm(e)}} key={index} style={{cursor:'pointer'}}>
                         <div className='gridItem'>
                             <img src={e.url} key={index} width='100%'/>
                             <h2>{e.name} {genderIcon()}</h2>
