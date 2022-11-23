@@ -33,7 +33,7 @@ export default function Home() {
                     <Button href='/Animals' variant='contained' size='large'>Adopt now</Button>
                 </div>
             </Box>
-            <Box sx={{width:'65%', display:'flex', alignItems:'flex-end'}}>
+            <Box sx={{width:'65%', display:'flex', alignItems:'flex-end', overflowX:'hidden'}}>
                 <img className='bannerPets animate__animated animate__fadeInRight animate__delay-1s' src={require('../img/banners/banner.png')}  alt='bannerPets'/>
             </Box>
         </Box>

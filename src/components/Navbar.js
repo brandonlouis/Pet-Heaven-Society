@@ -58,6 +58,7 @@ export default function Navbar() {
                 await createUser(email, password)
                 alert('Account created successfully')
                 closeLoginModal()
+                window.location.reload()
             } catch (err) {
                 console.log(err)
                 if (err.code === 'auth/email-already-in-use') {
