@@ -124,7 +124,7 @@ export default function Admin() {
                                         <p>Gender:</p><p>{e.interestedIn.animalGender}</p>
                                     </span>
                                 </div>
-                                <img src={e.interestedIn.imgURL} width='250px' style={{float:'right'}}/>
+                                <img src={e.interestedIn.imgURL} width='250px' style={{float:'right'}} alt='interestImg'/>
 
                             </div>
                         </AccordionDetails>
@@ -187,7 +187,7 @@ export default function Admin() {
                                         <p>Notes:</p><p>{e.petDetails.notes ? e.petDetails.notes : 'N.A'}</p>
                                     </span>
                                 </div>
-                                <img src={e.petDetails.imgURL} style={{width:'300px'}}/>
+                                <img src={e.petDetails.imgURL} style={{width:'300px'}} alt='rehomePetImg'/>
                             </div>
                         </AccordionDetails>
                     </Accordion>

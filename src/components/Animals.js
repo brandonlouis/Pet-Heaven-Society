@@ -5,11 +5,11 @@ import AnimalDataSvc from '../firebaseService/animalSvc'
 
 export default function Animals() {
     const [animalData,setAnimalData]=useState([])
-    const [isLoading, setIsLoading] = useState(true)
     const [initType, setInitType] = useState([])
     const [initAge, setInitAge] = useState([])
     const [initBreed, setInitBreed] = useState([])
     const [initGender, setInitGender] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const [type, setType] = useState('')
     const [age, setAge] = useState('')
@@ -29,32 +29,36 @@ export default function Animals() {
         var uniqueField = []
         animalData.map((e) => {
             if (uniqueField.indexOf(e.type) === -1) {
-                uniqueField.push(e.type)
+                return uniqueField.push(e.type)
             }
+            return null
         })
         setInitType(uniqueField.sort())
         uniqueField = []
 
         animalData.map((e) => {
             if (uniqueField.indexOf(e.age) === -1) {
-                uniqueField.push(e.age)
+                return uniqueField.push(e.age)
             }
+            return null
         })
         setInitAge(uniqueField.sort())
         uniqueField = []
 
         animalData.map((e) => {
             if (uniqueField.indexOf(e.breed) === -1) {
-                uniqueField.push(e.breed)
+                return uniqueField.push(e.breed)
             }
+            return null
         })
         setInitBreed(uniqueField.sort())
         uniqueField = []
 
         animalData.map((e) => {
             if (uniqueField.indexOf(e.gender) === -1) {
-                uniqueField.push(e.gender)
+                return uniqueField.push(e.gender)
             }
+            return null
         })
         setInitGender(uniqueField.sort())
         uniqueField = []
@@ -135,7 +139,7 @@ export default function Animals() {
             </FormControl>
 
             <FormGroup sx={{ml: 3, minWidth: 100}}>
-                <FormControlLabel control={<Switch color='success'/>} label="HDB Approved" />
+                <FormControlLabel control={<Switch value={hdbApproved} onChange={hdbFilter} color='success'/>} label="HDB Approved" />
             </FormGroup>
             </Box>
         </Box>

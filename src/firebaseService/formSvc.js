@@ -7,10 +7,11 @@ const rehomeCollectionRef = collection(db, 'rehome')
 class FormDataSvc {
     async getForms(type) {
         const forms = []
+        var querySnapshot = ''
         if (type === 'adopt') {
-            var querySnapshot = await getDocs(adoptCollectionRef)
+            querySnapshot = await getDocs(adoptCollectionRef)
         } else {
-            var querySnapshot = await getDocs(rehomeCollectionRef)
+            querySnapshot = await getDocs(rehomeCollectionRef)
         }
         querySnapshot.forEach((doc) => {
             forms.push(doc)
@@ -36,10 +37,11 @@ class FormDataSvc {
 
     // If imgId is not supplied, it means the admin is deleting from adoption applications, as no images are uploaded there
     async deleteForm(id, imgId) {
+        var docRef = ''
         if (!imgId) {
-            var docRef = doc(adoptCollectionRef, id)
+            docRef = doc(adoptCollectionRef, id)
         } else {
-            var docRef = doc(rehomeCollectionRef, id)
+            docRef = doc(rehomeCollectionRef, id)
 
             const storage = getStorage()
             const imgRef = ref(storage, `/pending/${imgId}`)

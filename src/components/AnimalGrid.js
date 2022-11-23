@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AnimalDataSvc from '../firebaseService/animalSvc'
 
-const AnimalGrid  = ({ results, type, gender }) => {
+const AnimalGrid  = ({ results }) => {
     const [animalData,setAnimalData]=useState([])
 
     const fetchAnimals = async () => {
@@ -34,7 +34,7 @@ const AnimalGrid  = ({ results, type, gender }) => {
                     ageText += ' year'
                 } else if (e.age > 1){
                     ageText += ' years'
-                } else if (e.age == 0.1) {
+                } else if (e.age === 0.1) {
                     ageText = ageText*10 + ' month'
                 } else if (e.age < 1) {
                     ageText = ageText*10 + ' months'
@@ -50,14 +50,14 @@ const AnimalGrid  = ({ results, type, gender }) => {
 
                 function hdbIcon() {
                     if (e.hdbApproved) {
-                        return <img src={require('../img/icons/hdbApproved.png')} style={{width:'25px'}}/>
+                        return <img src={require('../img/icons/hdbApproved.png')} style={{width:'25px'}} alt='hdbBadge'/>
                     }
                 }
 
                 return (
                     <a onClick={()=>{toAdoptionForm(e)}} key={index} style={{cursor:'pointer'}}>
                         <div className='gridItem'>
-                            <img src={e.url} key={index} width='100%'/>
+                            <img src={e.url} key={index} width='100%' alt={e.name}/>
                             <h2>{e.name} {genderIcon()}</h2>
                             <p style={{margin:0}}>Breed: {e.breed} {hdbIcon()}</p>
                             <p style={{marginTop:0}}>Age: {ageText} old</p>

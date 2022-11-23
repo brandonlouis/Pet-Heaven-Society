@@ -124,12 +124,12 @@ export default function Navbar() {
         <>
         <nav className='animate__animated animate__fadeInDown animate__fast'>
             <Box className='navBarContent' sx={{display:'flex'}}>
-                <a href='/'><img src={require('../img/branding/logo.png')} width='140px'/></a>
+                <a href='/'><img src={require('../img/branding/logo.png')} width='140px' alt='logo'/></a>
                 <Box className='navLinks' sx={{display:'flex', alignItems:'center', right:0, marginLeft:'auto'}}>
                     <Button href='/'>Home</Button>
                     <Button href='/Services'>Services</Button>
                     <Button href='/Animals'>Animals</Button>
-                    {user && user.email=='admin@psh.com' ? <Button href='/Admin'>Admin</Button> : <></>}
+                    {user && user.email==='admin@phs.com' ? <Button href='/Admin'>Admin</Button> : <></>}
                     <IconButton sx={{p:0, ml:'24px'}} onClick={user ? handleLogout : openLoginModal}>
                         {user ? 
                             <Badge color='success' overlap='circular' badgeContent=' ' anchorOrigin={{vertical:'bottom', horizontal:'right'}}>
@@ -147,7 +147,7 @@ export default function Navbar() {
             <Box className='loginModal'>
                 <div className='loginModalContent'>
                 <IconButton onClick={closeLoginModal} sx={{position:'absolute', right:10, top:10}}><Close fontSize='large' color='primary'/></IconButton>
-                <img src={require('../img/branding/logoIcon.png')} width='60px' style={{marginBottom:10, paddingTop:20}}/>
+                <img src={require('../img/branding/logoIcon.png')} width='60px' style={{marginBottom:10, paddingTop:20}} alt='logo'/>
                 <Box sx={{borderBottom: 1, borderColor: 'divider', width:'100%'}}>
                     <Tabs value={tabValue} onChange={changeTab}>
                         <Tab label='Login' {...tabProps(0)} />

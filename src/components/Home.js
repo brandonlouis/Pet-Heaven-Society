@@ -34,7 +34,7 @@ export default function Home() {
                 </div>
             </Box>
             <Box sx={{width:'65%', display:'flex', alignItems:'flex-end'}}>
-                <img className='bannerPets animate__animated animate__fadeInRight animate__delay-1s' src={require('../img/banners/banner.png')}/>
+                <img className='bannerPets animate__animated animate__fadeInRight animate__delay-1s' src={require('../img/banners/banner.png')}  alt='bannerPets'/>
             </Box>
         </Box>
 
@@ -42,7 +42,7 @@ export default function Home() {
         <Box className='mission' sx={{mt:25}}>
             <Grid container direction='row' justifyContent='space-between' alignItems='center'>
                 <Grid item xs={5.7}>
-                    <img src={require('../img/services.png')} width='100%'/>
+                    <img src={require('../img/services.png')} width='100%' alt='serviceImg'/>
                 </Grid>
                 <Grid item xs={5.7}>
                     <h1>Our mission</h1>
@@ -59,17 +59,17 @@ export default function Home() {
             <h1>How you can help</h1>
             <Grid container direction='row' justifyContent='space-evenly' alignItems='stretch'>
                 <Grid item xs={3.5} className='gridItem'>
-                    <img src={require('../img/icons/adopt.png')}></img>
+                    <img src={require('../img/icons/adopt.png')} alt='adoptLogo'></img>
                     <h2>Adopt </h2>
                     <p>Adopting from us not only saves an animal, but also helps us reduce the amount of time and resources we need to operate on a daily basis.</p>
                 </Grid>
                 <Grid item xs={3.5} className='gridItem'>
-                    <img src={require('../img/icons/donate.png')}></img>
+                    <img src={require('../img/icons/donate.png')} alt='donateLogo'></img>
                     <h2>Donate</h2>
                     <p>Every penny counts! As a non-profit organisation, your contributions will go a long way toward helping us provide better facility and care for the animals.</p>
                 </Grid>
                 <Grid item xs={3.5} className='gridItem'>
-                    <img src={require('../img/icons/volunteer.png')}></img>
+                    <img src={require('../img/icons/volunteer.png')} alt='volunteerLogo'></img>
                     <h2>Volunteer</h2>
                     <p>Have some free time and a passion for working with animals? Join our team as a volunteer, and who knows? Perhaps you'll decide to adopt one as well!</p>
                 </Grid>
