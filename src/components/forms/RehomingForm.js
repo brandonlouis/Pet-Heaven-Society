@@ -54,7 +54,7 @@ export default function RehomingForm() {
             alert('An error has occured. Please try again later.')
         }
 
-        navigate('/animals')
+        navigate('/services')
     }
 
     return (
